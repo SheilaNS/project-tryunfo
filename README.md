@@ -119,7 +119,7 @@ O tema do seu baralho é **livre**, então explore a sua criatividade! Mas use s
 
   - Serão dois dias de projeto.
   
-  - Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+  - Data de entrega para avaliação final do projeto: `03/03/2022 14:00`.
 
 ---
 # Observações técnicas
@@ -174,9 +174,9 @@ No caso acima, temos duas possibilidades, ativo ou não, ou seja, duas renderiza
 ## Antes de começar a desenvolver
 
 1. Clone o repositório
-  * `git clone git@github.com:tryber/sd-0x-project-tryunfo.git`.
+  * `git clone git@github.com:tryber/sd-019-a-project-tryunfo.git`.
   * Entre na pasta do repositório que você acabou de clonar:
-    * `cd sd-0x-project-tryunfo`
+    * `cd sd-019-a-project-tryunfo`
 
 2. Instale as dependências e inicialize o projeto
   * Instale as dependências:
