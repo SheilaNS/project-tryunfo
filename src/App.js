@@ -1,5 +1,6 @@
 import React from 'react';
 import Form from './components/Form';
+import './assets/App.css';
 
 class App extends React.Component {
   render() {
@@ -9,7 +10,7 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </header>
         <main>
-          <Form />
+          <Form cardName="" />
         </main>
       </>
     );
