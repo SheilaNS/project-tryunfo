@@ -15,6 +15,7 @@ class App extends React.Component {
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
+      hasTrunfo: false,
       isSaveButtonDisabled: true,
       deck: [],
     };
@@ -27,10 +28,9 @@ class App extends React.Component {
 
   handleSave = () => {
     const {
-      deck,
+      deck, cardTrunfo,
     } = this.state;
     this.setState((beforeDeck) => (
-      // const newDeck = deck.concat(beforeDeck); => pensar depois como 'limpar' o deck
       { cardName: '',
         cardDescription: '',
         cardAttr1: '0',
@@ -38,9 +38,18 @@ class App extends React.Component {
         cardAttr3: '0',
         cardImage: '',
         cardRare: 'normal',
-        cardTrunfo: false,
-        isSaveButtonDisabled: true,
-        deck: deck.concat(beforeDeck),
+        hasTrunfo: cardTrunfo,
+        deck: deck.concat({
+          cardName: beforeDeck.cardName,
+          cardDescription: beforeDeck.cardDescription,
+          cardAttr1: beforeDeck.cardAttr1,
+          cardAttr2: beforeDeck.cardAttr2,
+          cardAttr3: beforeDeck.cardAttr3,
+          cardImage: beforeDeck.cardImage,
+          cardRare: beforeDeck.cardRare,
+          cardTrunfo: beforeDeck.cardTrunfo,
+          hasTrunfo: beforeDeck.hasTrunfo,
+        }),
       }
     ));
   }
@@ -59,9 +68,9 @@ class App extends React.Component {
     const MAX_UN = 90;
     const soma = (+cardAttr1) + (+cardAttr2) + (+cardAttr3);
     const ok4 = soma > MAX_ALL;
-    const ok5 = +cardAttr1 > MAX_UN || +cardAttr1 < 0;
-    const ok6 = +cardAttr2 > MAX_UN || +cardAttr2 < 0;
-    const ok7 = +cardAttr3 > MAX_UN || +cardAttr3 < 0;
+    const ok5 = (+cardAttr1 > MAX_UN) || (+cardAttr1 < 0);
+    const ok6 = (+cardAttr2 > MAX_UN) || (+cardAttr2 < 0);
+    const ok7 = (+cardAttr3 > MAX_UN) || (+cardAttr3 < 0);
     if (ok4 || ok5 || ok6 || ok7) {
       disabled = true;
     }
@@ -69,17 +78,6 @@ class App extends React.Component {
   }
 
   render() {
-    const {
-      cardName,
-      cardDescription,
-      cardAttr1,
-      cardAttr2,
-      cardAttr3,
-      cardImage,
-      cardRare,
-      cardTrunfo,
-      isSaveButtonDisabled,
-    } = this.state;
     return (
       <>
         <header>
@@ -87,27 +85,12 @@ class App extends React.Component {
         </header>
         <main>
           <Form
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
-            isSaveButtonDisabled={ isSaveButtonDisabled }
+            { ...this.state }
             onSaveButtonClick={ this.handleSave }
             onInputChange={ this.handleChange }
           />
           <Card
-            cardName={ cardName }
-            cardDescription={ cardDescription }
-            cardAttr1={ cardAttr1 }
-            cardAttr2={ cardAttr2 }
-            cardAttr3={ cardAttr3 }
-            cardImage={ cardImage }
-            cardRare={ cardRare }
-            cardTrunfo={ cardTrunfo }
+            { ...this.state }
           />
         </main>
       </>
