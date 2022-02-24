@@ -9,13 +9,14 @@ class App extends React.Component {
     this.state = {
       cardName: '',
       cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
+      cardAttr1: '0',
+      cardAttr2: '0',
+      cardAttr3: '0',
       cardImage: '',
       cardRare: 'normal',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      deck: [],
     };
   }
 
@@ -23,6 +24,26 @@ class App extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({ [target.name]: value }, () => this.validateButton());
   };
+
+  handleSave = () => {
+    const {
+      deck,
+    } = this.state;
+    this.setState((beforeDeck) => (
+      // const newDeck = deck.concat(beforeDeck); => pensar depois como 'limpar' o deck
+      { cardName: '',
+        cardDescription: '',
+        cardAttr1: '0',
+        cardAttr2: '0',
+        cardAttr3: '0',
+        cardImage: '',
+        cardRare: 'normal',
+        cardTrunfo: false,
+        isSaveButtonDisabled: true,
+        deck: deck.concat(beforeDeck),
+      }
+    ));
+  }
 
   validateButton = () => {
     const { cardName, cardDescription, cardImage } = this.state;
@@ -66,6 +87,14 @@ class App extends React.Component {
         </header>
         <main>
           <Form
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardImage={ cardImage }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
             isSaveButtonDisabled={ isSaveButtonDisabled }
             onSaveButtonClick={ this.handleSave }
             onInputChange={ this.handleChange }
