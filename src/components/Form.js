@@ -22,14 +22,17 @@ class Form extends Component {
     const isSuper = hasTrunfo
       ? (<p>Você já tem um Super Trunfo em seu baralho</p>)
       : (
-        <input
-          checked={ cardTrunfo }
-          onChange={ onInputChange }
-          name="cardTrunfo"
-          id="trunfo"
-          type="checkbox"
-          data-testid="trunfo-input"
-        />
+        <label htmlFor="trunfo">
+          É Super Tunfo?
+          <input
+            checked={ cardTrunfo }
+            onChange={ onInputChange }
+            name="cardTrunfo"
+            id="trunfo"
+            type="checkbox"
+            data-testid="trunfo-input"
+          />
+        </label>
       );
 
     return (
@@ -113,10 +116,7 @@ class Form extends Component {
             <option value="muito raro">Muito Raro</option>
           </select>
         </label>
-        <label htmlFor="trunfo">
-          É Super Tunfo?
-          {isSuper}
-        </label>
+        {isSuper}
         <button
           type="button"
           disabled={ isSaveButtonDisabled }

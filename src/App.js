@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import './assets/App.css';
 import Card from './components/Card';
+import DeckList from './components/DeckList';
 
 class App extends React.Component {
   constructor() {
@@ -28,7 +29,7 @@ class App extends React.Component {
 
   handleSave = () => {
     const {
-      deck, cardTrunfo,
+      deck,
     } = this.state;
     this.setState((beforeDeck) => (
       { cardName: '',
@@ -38,7 +39,18 @@ class App extends React.Component {
         cardAttr3: '0',
         cardImage: '',
         cardRare: 'normal',
-        hasTrunfo: cardTrunfo,
+        cardTrunfo: false,
+        // hof some feita com a ajuda do Gabriel Melo
+        hasTrunfo: [...beforeDeck.deck, {
+          cardName: beforeDeck.cardName,
+          cardDescription: beforeDeck.cardDescription,
+          cardAttr1: beforeDeck.cardAttr1,
+          cardAttr2: beforeDeck.cardAttr2,
+          cardAttr3: beforeDeck.cardAttr3,
+          cardImage: beforeDeck.cardImage,
+          cardRare: beforeDeck.cardRare,
+          cardTrunfo: beforeDeck.cardTrunfo,
+        }].some((card) => card.cardTrunfo),
         deck: deck.concat({
           cardName: beforeDeck.cardName,
           cardDescription: beforeDeck.cardDescription,
@@ -48,7 +60,6 @@ class App extends React.Component {
           cardImage: beforeDeck.cardImage,
           cardRare: beforeDeck.cardRare,
           cardTrunfo: beforeDeck.cardTrunfo,
-          hasTrunfo: beforeDeck.hasTrunfo,
         }),
       }
     ));
@@ -78,6 +89,14 @@ class App extends React.Component {
   }
 
   render() {
+    const { deck } = this.state;
+    const list = (deck.length !== 0)
+      ? (
+        <>
+          <h2>Suas cartas</h2>
+          {deck.map((card, index) => <DeckList { ...card } key={ index } />)}
+        </>)
+      : '';
     return (
       <>
         <header>
@@ -92,6 +111,9 @@ class App extends React.Component {
           <Card
             { ...this.state }
           />
+          <div className="card-list">
+            {list}
+          </div>
         </main>
       </>
     );
