@@ -24,7 +24,7 @@ class App extends React.Component {
 
   handleChange = ({ target }) => {
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({ [target.name]: value }, () => this.validateButton());
+    this.setState({ [target.name]: value }, this.validateButton);
   };
 
   handleSave = () => {
@@ -52,6 +52,7 @@ class App extends React.Component {
           cardTrunfo: beforeDeck.cardTrunfo,
         }].some((card) => card.cardTrunfo),
         deck: deck.concat({
+          listId: beforeDeck.cardName,
           cardName: beforeDeck.cardName,
           cardDescription: beforeDeck.cardDescription,
           cardAttr1: beforeDeck.cardAttr1,
@@ -63,6 +64,20 @@ class App extends React.Component {
         }),
       }
     ));
+  }
+
+  // 'reverificação' do cardTrunfo feita com a ajuda do Danillo Gonçalves
+  handleCheckTrunfo = () => {
+    this.setState((beforeDeck) => ({
+      hasTrunfo: [...beforeDeck.deck].some((card) => card.cardTrunfo),
+    }));
+  }
+
+  handleDelete = ({ target }) => {
+    this.setState((beforeDelete) => (
+      {
+        deck: beforeDelete.deck.filter((card) => card.cardName !== target.value),
+      }), this.handleCheckTrunfo);
   }
 
   validateButton = () => {
@@ -93,8 +108,14 @@ class App extends React.Component {
     const list = (deck.length !== 0)
       ? (
         <>
-          <h2>Suas cartas</h2>
-          {deck.map((card, index) => <DeckList { ...card } key={ index } />)}
+          <div className="list-title">
+            <h2>Suas cartas</h2>
+          </div>
+          {deck.map((card, index) => (<DeckList
+            { ...card }
+            key={ index }
+            deleteButton={ this.handleDelete }
+          />))}
         </>)
       : '';
     return (
@@ -103,14 +124,16 @@ class App extends React.Component {
           <h1>Tryunfo</h1>
         </header>
         <main>
-          <Form
-            { ...this.state }
-            onSaveButtonClick={ this.handleSave }
-            onInputChange={ this.handleChange }
-          />
-          <Card
-            { ...this.state }
-          />
+          <div className="card-creation">
+            <Form
+              { ...this.state }
+              onSaveButtonClick={ this.handleSave }
+              onInputChange={ this.handleChange }
+            />
+            <Card
+              { ...this.state }
+            />
+          </div>
           <div className="card-list">
             {list}
           </div>

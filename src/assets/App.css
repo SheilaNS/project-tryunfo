@@ -1,3 +1,24 @@
+* {
+  font-family: Lucida , serif;
+}
+
 header {
-  margin: 30px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-creation {
+  display: flex;
+}
+
+.card-list {
+  display: flex;
 }

@@ -1,6 +1,38 @@
 form {
   display: flex;
   flex-flow: column;
-  margin: 30px;
+  flex-grow: 2;
+  margin: 20px 30px 30px;
   max-width: 500px;
+}
+
+label {
+  font-family: Arial , serif;
+  font-weight: 600;
+  margin: 2px;
+  padding: 2px;
+}
+
+input, textarea, select {
+  font-size: 1rem;
+  height: 30px;
+  margin: 3px auto;
+  padding: 2px;
+  width: 100%;
+}
+
+textarea {
+  height: 70px;
+}
+
+input [ type = 'checkbox' ] {
+  width: 10px;
+}
+
+button {
+  border-radius: 5px;
+  font-size: 1.2rem;
+  height: 30px;
+  margin: 5px auto;
+  width: 100px;
 }

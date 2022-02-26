@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import '../assets/Card.css';
 // Pair Programming com André Felipe
 
 class Card extends Component {
@@ -18,15 +19,30 @@ class Card extends Component {
     const isTrunfo = cardTrunfo ? (<p data-testid="trunfo-card">Super Trunfo</p>) : '';
 
     return (
-      <div>
-        <p data-testid="name-card">{cardName}</p>
-        <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        <p data-testid="description-card">{cardDescription}</p>
-        <p data-testid="attr1-card">{cardAttr1}</p>
-        <p data-testid="attr2-card">{cardAttr2}</p>
-        <p data-testid="attr3-card">{cardAttr3}</p>
-        <p data-testid="rare-card">{cardRare}</p>
-        {isTrunfo}
+      <div className="card-show">
+        <p className="card-title" data-testid="name-card">{cardName}</p>
+        <div className="card-image">
+          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
+        </div>
+        <p className="card-descr" data-testid="description-card">{cardDescription}</p>
+        <div className="card-attrs">
+          <p data-testid="attr1-card">
+            <span>Teor Alcoólico (%): </span>
+            {cardAttr1}
+          </p>
+          <p data-testid="attr2-card">
+            <span>IBU: </span>
+            {cardAttr2}
+          </p>
+          <p data-testid="attr3-card">
+            <span>???: </span>
+            {cardAttr3}
+          </p>
+        </div>
+        <div className="card-info">
+          <p data-testid="rare-card">{cardRare}</p>
+          {isTrunfo}
+        </div>
       </div>
     );
   }

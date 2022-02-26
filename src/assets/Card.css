@@ -1,0 +1,111 @@
+.card-container {
+  align-self: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  height: 420px;
+  justify-content: center;
+  margin: 5px;
+  max-width: 260px;
+}
+
+.card-show {
+  align-self: center;
+  background-color: chocolate;
+  background-image: url('/images/cerveja.jpg');
+  background-position: 0 -30px;
+  background-size: 260%;
+  border: 7px solid black;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  height: 380px;
+  justify-content: center;
+  margin: 10px;
+  padding: 7px;
+  width: 240px;
+}
+
+.card-title {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: center;
+  top: 5px;
+}
+
+.card-image {
+  align-self: center;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  height: 150px;
+  justify-content: center;
+  margin: 2px 0 5px;
+  max-width: 100%;
+  width: 240px;
+}
+
+img {
+  align-self: center;
+  display: flex;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 2px;
+}
+
+.card-descr {
+  background-color: rgb(151, 75, 12);
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  font-family: Arial , serif;
+  font-size: 0.7rem;
+  height: 50px;
+  margin-bottom: 2px;
+  padding: 2px;
+  width: 100%;
+}
+
+.card-attrs {
+  background-color: rgb(151, 75, 12);
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-flow: column;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  padding: 3px;
+  width: 100%;
+}
+
+.card-attrs p {
+  display: flex;
+  justify-content: space-between;
+  margin: 1px;
+}
+
+.card-info {
+  color: black;
+  display: flex;
+  font-weight: 600;
+  justify-content: space-evenly;
+  padding: 2px;
+}
+
+.card-info p {
+  background-color: rgb(151, 28, 12, 0.8);
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 0 5px;
+}
