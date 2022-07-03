@@ -2,7 +2,8 @@ import React from 'react';
 import Form from './components/Form';
 import './assets/App.css';
 import Card from './components/Card';
-import DeckList from './components/DeckList';
+// import DeckList from './components/DeckList';
+import CardFilter from './components/CardFilter';
 
 class App extends React.Component {
   constructor() {
@@ -40,7 +41,7 @@ class App extends React.Component {
         cardImage: '',
         cardRare: 'normal',
         cardTrunfo: false,
-        // hof some feita com a ajuda do Gabriel Melo
+        // hof .some feita com a ajuda do Gabriel Melo
         hasTrunfo: [...beforeDeck.deck, {
           cardName: beforeDeck.cardName,
           cardDescription: beforeDeck.cardDescription,
@@ -105,19 +106,19 @@ class App extends React.Component {
 
   render() {
     const { deck } = this.state;
-    const list = (deck.length !== 0)
-      ? (
-        <>
-          <div className="list-title">
-            <h2>Suas cartas</h2>
-          </div>
-          {deck.map((card, index) => (<DeckList
-            { ...card }
-            key={ index }
-            deleteButton={ this.handleDelete }
-          />))}
-        </>)
-      : '';
+    // const list = (deck.length !== 0)
+    //   ? (
+    //     <>
+    //       <div className="list-title">
+    //         <h2>Suas cartas</h2>
+    //       </div>
+    //       {deck.map((card, index) => (<DeckList
+    //         { ...card }
+    //         key={ index }
+    //         deleteButton={ this.handleDelete }
+    //       />))}
+    //     </>)
+    //   : '';
     return (
       <>
         <header>
@@ -135,7 +136,7 @@ class App extends React.Component {
             />
           </div>
           <div className="card-list">
-            {list}
+            <CardFilter deck={ deck } />
           </div>
         </main>
       </>
