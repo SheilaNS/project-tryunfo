@@ -1,0 +1,25 @@
+/* label {
+  display: flex;
+  width: 100%;
+}
+
+input {
+  height: 24px;
+  margin: 8px;
+  width: 100%;
+}
+
+textarea {
+  height: 50px;
+  margin: 8px;
+  width: 100%;
+} */
+
+.formContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 12px;
+  width: 300px;
+}

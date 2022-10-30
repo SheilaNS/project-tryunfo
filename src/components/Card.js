@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import '../assets/Card.css';
-// Pair Programming com André Felipe
 
-class Card extends Component {
+export default class Card extends Component {
   render() {
     const {
       cardName,
@@ -15,48 +13,46 @@ class Card extends Component {
       cardRare,
       cardTrunfo,
     } = this.props;
-
-    const isTrunfo = cardTrunfo ? (<p data-testid="trunfo-card">Super Trunfo</p>) : '';
-
     return (
-      <div className="card-show">
-        <p className="card-title" data-testid="name-card">{cardName}</p>
-        <div className="card-image">
-          <img src={ cardImage } alt={ cardName } data-testid="image-card" />
-        </div>
-        <p className="card-descr" data-testid="description-card">{cardDescription}</p>
-        <div className="card-attrs">
-          <p data-testid="attr1-card">
-            <span>Teor Alcoólico (%): </span>
-            {cardAttr1}
-          </p>
-          <p data-testid="attr2-card">
-            <span>IBU: </span>
-            {cardAttr2}
-          </p>
-          <p data-testid="attr3-card">
-            <span>???: </span>
-            {cardAttr3}
-          </p>
-        </div>
-        <div className="card-info">
-          <p data-testid="rare-card">{cardRare}</p>
-          {isTrunfo}
-        </div>
-      </div>
+      <>
+        <p>
+          Nome:
+          <span data-testid="name-card">{cardName}</span>
+        </p>
+        <img data-testid="image-card" src={ cardImage } alt={ cardName } />
+        <p>
+          Descrição:
+          <span data-testid="description-card">{cardDescription}</span>
+        </p>
+        <p>
+          Atributo 1:
+          <span data-testid="attr1-card">{cardAttr1}</span>
+        </p>
+        <p>
+          Atributo 2:
+          <span data-testid="attr2-card">{cardAttr2}</span>
+        </p>
+        <p>
+          Atributo 3:
+          <span data-testid="attr3-card">{cardAttr3}</span>
+        </p>
+        <p>
+          Raridade:
+          <span data-testid="rare-card">{cardRare}</span>
+        </p>
+        { cardTrunfo && (<p data-testid="trunfo-card">Super Trunfo</p>)}
+      </>
     );
   }
 }
 
 Card.propTypes = {
-  cardName: PropTypes.string.isRequired,
-  cardDescription: PropTypes.string.isRequired,
-  cardAttr1: PropTypes.string.isRequired,
-  cardAttr2: PropTypes.string.isRequired,
-  cardAttr3: PropTypes.string.isRequired,
-  cardImage: PropTypes.string.isRequired,
-  cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
-};
-
-export default Card;
+  cardName: PropTypes.string,
+  cardDescription: PropTypes.string,
+  cardAttr1: PropTypes.string,
+  cardAttr2: PropTypes.string,
+  cardAttr3: PropTypes.string,
+  cardImage: PropTypes.string,
+  cardRare: PropTypes.string,
+  cardTrunfo: PropTypes.bool,
+}.isRequired;
